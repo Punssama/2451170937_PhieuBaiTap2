@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+</head>
+<body>
+	<h1>Form đăng ký tài khoản</h1>
+
+	<form action="#" method="POST">
+		<fieldset>
+			<legend>Thông tin cá nhân</legend>
+
+			<p>
+				<label for="fullname">Họ tên</label><br>
+				<input type="text" id="fullname" name="fullname" required minlength="2" maxlength="50" placeholder="Nhập họ tên của bạn">
+			</p>
+
+			<p>
+				<label for="email">Email</label><br>
+				<input type="email" id="email" name="email" required placeholder="you@example.com">
+			</p>
+
+			<p>
+				<label for="phone">Số điện thoại</label><br>
+				<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="0901234567">
+			</p>
+
+			<p>
+				<label for="dob">Ngày sinh</label><br>
+				<input type="date" id="dob" name="dob" placeholder="Chọn ngày sinh">
+			</p>
+		</fieldset>
+
+		<fieldset>
+			<legend>Tài khoản</legend>
+
+			<p>
+				<label for="username">Username</label><br>
+				<input type="text" id="username" name="username" pattern="[A-Za-z0-9_]{3,20}" placeholder="abc_123">
+			</p>
+
+			<p>
+				<label for="password">Password</label><br>
+				<input type="password" id="password" name="password" required minlength="8" pattern="(?=.*[A-Z])(?=.*\d).{8,}" placeholder="Ít nhất 8 ký tự, có hoa và số">
+			</p>
+
+			<p>
+				<label for="confirm-password">Xác nhận password</label><br>
+				<input type="password" id="confirm-password" name="confirm_password" required minlength="8" pattern="(?=.*[A-Z])(?=.*\d).{8,}" placeholder="Nhập lại mật khẩu">
+			</p>
+		</fieldset>
+
+		<fieldset>
+			<legend>Thông tin giao hàng</legend>
+
+			<p>
+				<label for="city">Thành phố</label><br>
+				<select id="city" name="city" required>
+					<option value="">-- Chọn tỉnh/thành --</option>
+					<option value="hn">Hà Nội</option>
+					<option value="hcm">TP.HCM</option>
+					<option value="dn">Đà Nẵng</option>
+					<option value="hp">Hải Phòng</option>
+					<option value="ct">Cần Thơ</option>
+				</select>
+			</p>
+
+			<p>
+				<label for="district">Quận/Huyện</label><br>
+				<select id="district" name="district" required>
+					<option value="">-- Chọn quận/huyện --</option>
+					<option value="q1">Quận 1</option>
+					<option value="q3">Quận 3</option>
+					<option value="cg">Cầu Giấy</option>
+				</select>
+			</p>
+
+			<p>
+				<label for="address">Địa chỉ chi tiết</label><br>
+				<textarea id="address" name="address" rows="3" placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+			</p>
+
+			<p>
+				<span>Giới tính</span><br>
+				<input type="radio" id="male" name="gender" value="male">
+				<label for="male">Nam</label>
+				<input type="radio" id="female" name="gender" value="female">
+				<label for="female">Nữ</label>
+				<input type="radio" id="other" name="gender" value="other">
+				<label for="other">Khác</label>
+			</p>
+		</fieldset>
+
+		<p>
+			<input type="checkbox" id="agree" name="agree" required>
+			<label for="agree">Tôi đồng ý với điều khoản sử dụng</label>
+		</p>
+
+		<p>
+			<button type="submit">Đăng ký</button>
+			<button type="reset">Làm lại</button>
+		</p>
+	</form>
+
+	<script>
+		const dob = document.getElementById('dob');
+		const today = new Date();
+		const yyyy = today.getFullYear();
+		const mm = String(today.getMonth() + 1).padStart(2, '0');
+		const dd = String(today.getDate()).padStart(2, '0');
+		dob.max = `${yyyy}-${mm}-${dd}`;
+	</script>
+</body>
+</html>
